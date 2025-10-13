@@ -1,4 +1,4 @@
-import React, { lazy } from "react";
+import React from "react";
 
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { HelmetMeta } from "./HelmetMeta";
@@ -7,9 +7,9 @@ import { CssBaseline } from "@material-ui/core";
 import { logCredits } from "../utils/logCredits";
 
 import { Home } from "../pages/Home";
-
-const Resume = lazy(() => import("../pages/Resume"));
-const PageNotFound = lazy(() => import("../pages/PageNotFound"));
+import { Projects } from "../pages/Projects";
+import { Resume } from "../pages/Resume";
+import { About } from "../pages/About";
 
 export const App = () => {
     logCredits();
@@ -22,7 +22,8 @@ export const App = () => {
                 <Switch>
                     <Route path="/" exact component={Home} />
                     <Route path="/resume" component={Resume} />
-                    <Route path="*" component={PageNotFound} />
+                    <Route path="/projects" component={Projects} />
+                    <Route path="/about" component={About} />
                 </Switch>
             </Router>
         </ThemeProvider>

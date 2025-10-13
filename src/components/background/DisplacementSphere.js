@@ -27,9 +27,16 @@ import { cleanScene, removeLights, cleanRenderer } from "../../utils/three";
 import "./DisplacementSphere.css";
 import { ThemeContext } from "../theme/ThemeProvider";
 
-const DisplacementSphere = (props) => {
+const DisplacementSphere = ({
+    primaryColor = "250 250 250",     // sphere / light color
+    backgroundColor = "17 17 17",     // scene background
+    rotationSpeed = 0.001,              // sphere rotation speed
+    sphereAmplitude = 0.00005,          // shader time multiplier
+    lightingIntensity = 0.6,            // directional light intensity
+    ...props                             // any other props (className, id, etc.)
+}) => {
+    
     const { theme } = useContext(ThemeContext);
-    const rgbBackground = theme === "light" ? "250 250 250" : "17 17 17";
     const width = useRef(window.innerWidth);
     const height = useRef(window.innerHeight);
     const start = useRef(Date.now());
@@ -49,11 +56,14 @@ const DisplacementSphere = (props) => {
     const isInViewport = useInViewport(canvasRef);
 
     useEffect(() => {
+        if (!canvasRef.current) return;
+
         mouse.current = new Vector2(0.8, 0.5);
         renderer.current = new WebGLRenderer({
             canvas: canvasRef.current,
             powerPreference: "high-performance",
         });
+
         renderer.current.setSize(width.current, height.current);
         renderer.current.setPixelRatio(1);
         renderer.current.outputEncoding = sRGBEncoding;
@@ -96,29 +106,29 @@ const DisplacementSphere = (props) => {
         };
     }, []);
 
+    // Lights and background
     useEffect(() => {
         const dirLight = new DirectionalLight(
-            rgbToThreeColor("250 250 250"),
-            0.6
+            rgbToThreeColor(primaryColor),
+            lightingIntensity
         );
         const ambientLight = new AmbientLight(
-            rgbToThreeColor("250 250 250"),
+            rgbToThreeColor(primaryColor),
             theme === "light" ? 0.8 : 0.1
         );
 
-        dirLight.position.z = 200;
-        dirLight.position.x = 100;
-        dirLight.position.y = 100;
+        dirLight.position.set(100, 100, 200);
 
         lights.current = [dirLight, ambientLight];
-        scene.current.background = rgbToThreeColor(rgbBackground);
+        scene.current.background = rgbToThreeColor(backgroundColor);
         lights.current.forEach((light) => scene.current.add(light));
 
         return () => {
             removeLights(lights.current);
         };
-    }, [rgbBackground, theme]);
+    }, [primaryColor, backgroundColor, lightingIntensity, theme]);
 
+    // Handle resizing
     useEffect(() => {
         const handleResize = () => {
             const canvasHeight = innerHeight();
@@ -129,7 +139,6 @@ const DisplacementSphere = (props) => {
             camera.current.aspect = windowWidth / fullHeight;
             camera.current.updateProjectionMatrix();
 
-            // Render a single frame on resize when not animating
             if (prefersReducedMotion) {
                 renderer.current.render(scene.current, camera.current);
             }
@@ -154,6 +163,7 @@ const DisplacementSphere = (props) => {
         };
     }, [prefersReducedMotion]);
 
+    // Mouse interaction
     useEffect(() => {
         const onMouseMove = (event) => {
             const { rotation } = sphere.current;
@@ -165,11 +175,7 @@ const DisplacementSphere = (props) => {
 
             if (!sphereSpring.current) {
                 sphereSpring.current = value(rotation.toArray(), (values) =>
-                    rotation.set(
-                        values[0],
-                        values[1],
-                        sphere.current.rotation.z
-                    )
+                    rotation.set(values[0], values[1], sphere.current.rotation.z)
                 );
             }
 
@@ -190,13 +196,11 @@ const DisplacementSphere = (props) => {
 
         return () => {
             window.removeEventListener("mousemove", onMouseMove);
-
-            if (tweenRef.current) {
-                tweenRef.current.stop();
-            }
+            if (tweenRef.current) tweenRef.current.stop();
         };
     }, [isInViewport, prefersReducedMotion]);
 
+    // Animation loop
     useEffect(() => {
         let animation;
 
@@ -205,10 +209,11 @@ const DisplacementSphere = (props) => {
 
             if (uniforms.current !== undefined) {
                 uniforms.current.time.value =
-                    0.00005 * (Date.now() - start.current);
+                    sphereAmplitude * (Date.now() - start.current);
             }
 
-            sphere.current.rotation.z += 0.001;
+            sphere.current.rotation.z += rotationSpeed
+
             renderer.current.render(scene.current, camera.current);
         };
 
@@ -221,7 +226,7 @@ const DisplacementSphere = (props) => {
         return () => {
             cancelAnimationFrame(animation);
         };
-    }, [isInViewport, prefersReducedMotion]);
+    }, [isInViewport, prefersReducedMotion, rotationSpeed, sphereAmplitude]);
 
     return (
         <Transition appear in onEnter={reflow} timeout={3000}>

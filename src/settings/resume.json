@@ -1,48 +1,36 @@
 {
     "basics": {
-        "name": "Jo Lienhoop",
-        "label": "Computer Science student",
-        "email": "hey@jolienhoop.com",
-        "phone": "(XXX) XXX-XXXX",
+        "name": "Jackson Greninger",
+        "label": "Computer Science and Engineering, Engineering Management, Posse",
+        "email": "jwg019@bucknell.edu",
+        "phone": "(747) 273-2122",
         "picture": "jl.png",
         "x_title": "Hey, I'm",
-        "job": "CS student",
-        "description": "Hey, I'm Jo Lienhoop, a Computer Science student based in Bremen, Germany. I love all things technical. Talk soon!",
-        "summary": "based in Bremen, Germany.",
+        "job": "CSE student",
+        "description": "Hey, I'm Jackson Greninger, a Computer Science student based in Glendale, CA.",
+        "summary": "based in Glendale, CA.",
         "keywords": "personal,website,portfolio,template,kit,jo,lienhoop,jolienhoop,computer,science,bremen,germany,react,github,linkedin,google,gitlab,telegram,material,design,ui,webapp",
         "url": "https://jolienhoop.com",
         "location": {
-            "address": "XX XXXXXstreet",
-            "postalCode": "XXXXX",
-            "city": "Bremen",
-            "country": "Germany",
-            "countryCode": "DEU",
-            "region": "Bremen"
+            "address": "3625 Sierra Vista Ave.",
+            "postalCode": "91208",
+            "city": "Glendale",
+            "country": "Glendale, CA",
+            "countryCode": "USA",
+            "region": "California"
         },
         "profiles": [
             {
-                "network": "Google",
-                "username": "hey@jolienhoop.com",
-                "url": "mailto:hey@jolienhoop.com",
-                "x_icon": "fab fa-google"
-            },
-            {
                 "network": "LinkedIn",
-                "username": "jolienhoop",
-                "url": "https://www.linkedin.com/in/jolienhoop/",
+                "username": "jacksongreninger",
+                "url": "https://www.linkedin.com/in/jackson-greninger/",
                 "x_icon": "fab fa-linkedin-in"
             },
             {
                 "network": "GitHub",
-                "username": "johoop",
-                "url": "https://github.com/JoHoop",
+                "username": "jacksongreninger",
+                "url": "https://github.com/jackson-greninger",
                 "x_icon": "fab fa-github"
-            },
-            {
-                "network": "GitLab",
-                "username": "joli",
-                "url": "https://gitlab.informatik.uni-bremen.de/joli",
-                "x_icon": "fab fa-gitlab"
             }
         ]
     },

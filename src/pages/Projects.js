@@ -2,8 +2,7 @@ import React from 'react';
 import PageButtonsPanel from '../components/pagebutton/pagebuttonpanel.js';
 import DisplacementSphere from '../components/background/DisplacementSphere';
 
-
-export const Resume = () => {
+export const Projects = () => {
   return (
     <div style={{ padding: "2rem", textAlign: "center" }}>
         <DisplacementSphere
@@ -13,8 +12,8 @@ export const Resume = () => {
           sphereAmplitude={0.00005}
         />
 
-        <h1>Resume</h1>
-        <p>Last updated: 10/10/25.</p>
+        <h1>Projects</h1>
+        <p>This is the Projects page.</p>
 
         {/* Right-side buttons */}
         <PageButtonsPanel />

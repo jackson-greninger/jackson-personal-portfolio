@@ -1,19 +1,21 @@
 import React from 'react';
-import { LogoLink } from '../components/logo/LogoLink';
 import { Content } from '../components/content/Content';
 import { Hidden } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import DisplacementSphere from '../components/background/DisplacementSphere';
-import { ThemeToggle } from '../components/theme/ThemeToggle';
 import { FooterText } from '../components/footer/FooterText';
 import { SocialIcons } from '../components/content/SocialIcons';
 import { SpeedDials } from '../components/speedDial/SpeedDial';
+import PageButtonsPanel from '../components/pagebutton/pagebuttonpanel.js';
 
 const useStyles = makeStyles(() => ({
   root: {
     display: 'flex',
     flexDirection: 'column',
     minHeight: '100vh',
+    alignItems: 'center',      // center horizontally
+    justifyContent: 'center',  // center vertically
+    textAlign: 'center',       // center text inside children
   },
 }));
 
@@ -23,10 +25,17 @@ export const Home = () => {
   return (
     <>
       <div className={classes.root}>
-        <DisplacementSphere />
-        <LogoLink />
+        <DisplacementSphere
+          primaryColor="255 0 0"
+          backgroundColor="100 100 100"
+          rotationSpeed={0.0005}
+          sphereAmplitude={0.00008}
+        />
+
         <Content />
-        <ThemeToggle />
+  
+        {/* page buttons */}
+        <PageButtonsPanel />
         <Hidden smDown>
           <SocialIcons />
         </Hidden>

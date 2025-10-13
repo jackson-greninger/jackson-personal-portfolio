@@ -8,6 +8,7 @@ const useStyles = makeStyles((theme) => ({
     position: 'absolute',
     top: theme.spacing(6),
     right: theme.spacing(6),
+    color: '#fff'
   },
   iconButton: {
     height: '2.5rem',

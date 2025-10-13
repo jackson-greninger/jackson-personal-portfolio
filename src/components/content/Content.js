@@ -9,6 +9,7 @@ const useStyles = makeStyles((theme) => ({
     main: {
         marginTop: "auto",
         marginBottom: "auto",
+        color: '#fff',
         "@media (max-width: 768px)": {
             marginLeft: theme.spacing(4),
         },

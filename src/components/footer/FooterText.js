@@ -1,14 +1,13 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Typography, Link } from '@material-ui/core';
-import { TextDecrypt } from '../content/TextDecrypt';
-import { HeartIcon } from '../content/SponsorButton';
+import { Typography } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   footerText: {
     position: 'absolute',
     bottom: theme.spacing(6),
     left: theme.spacing(6),
+    color: '#fff',
     '&:hover': {
       color: theme.palette.primary.main,
     },
@@ -23,18 +22,9 @@ export const FooterText = () => {
   const classes = useStyles();
 
   return (
-    <Link
-      color='inherit'
-      underline='none'
-      href='https://github.com/sponsors/JoHoop'
-      target='_blank'
-      rel='noopener noreferrer'
-      className={classes.footerText}
-    >
-      <HeartIcon />
-      <Typography variant='body1'>
-        <TextDecrypt text={' Sponsor'} />
-      </Typography>
-    </Link>
+    <Typography variant='body1' className={classes.footerText}>
+      {/* Optional: any footer text you want */}
+      Website last updated: October 2025.
+    </Typography>
   );
 };
