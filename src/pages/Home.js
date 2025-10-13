@@ -26,10 +26,10 @@ export const Home = () => {
     <>
       <div className={classes.root}>
         <DisplacementSphere
-          primaryColor="255 0 0"
+          primaryColor="255 200 255"
           backgroundColor="100 100 100"
-          rotationSpeed={0.0005}
-          sphereAmplitude={0.00008}
+          rotationSpeed={0.005}
+          sphereAmplitude={0.0001}
         />
 
         <Content />

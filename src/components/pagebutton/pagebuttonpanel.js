@@ -4,7 +4,7 @@ import PageButton from './pagebutton';
 
 const useStyles = makeStyles((theme) => ({
   panel: {
-    position: 'absolute',
+    position: 'fixed',
     top: '50%',              // start halfway down screen
     right: theme.spacing(6),
     display: 'flex',

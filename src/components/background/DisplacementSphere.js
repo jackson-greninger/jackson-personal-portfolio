@@ -26,6 +26,7 @@ import { media, rgbToThreeColor } from "../../utils/style";
 import { cleanScene, removeLights, cleanRenderer } from "../../utils/three";
 import "./DisplacementSphere.css";
 import { ThemeContext } from "../theme/ThemeProvider";
+import { createProceduralFoamBackground } from "./ProceduralBackground";
 
 const DisplacementSphere = ({
     primaryColor = "250 250 250",     // sphere / light color
@@ -36,6 +37,7 @@ const DisplacementSphere = ({
     ...props                             // any other props (className, id, etc.)
 }) => {
     
+    const bgPlane = useRef();
     const { theme } = useContext(ThemeContext);
     const width = useRef(window.innerWidth);
     const height = useRef(window.innerHeight);
@@ -78,7 +80,7 @@ const DisplacementSphere = ({
 
         scene.current = new Scene();
 
-        material.current = new MeshPhongMaterial();
+        material.current = new MeshPhongMaterial();        
         material.current.onBeforeCompile = (shader) => {
             uniforms.current = UniformsUtils.merge([
                 UniformsLib["ambient"],
@@ -104,6 +106,18 @@ const DisplacementSphere = ({
             cleanScene(scene.current);
             cleanRenderer(renderer.current);
         };
+    }, []);
+
+    
+    useEffect(() => {
+      bgPlane.current = createProceduralFoamBackground();
+      scene.current.add(bgPlane.current);
+        
+      return () => {
+        scene.current.remove(bgPlane.current);
+        if (bgPlane.current.material) bgPlane.current.material.dispose();
+        if (bgPlane.current.geometry) bgPlane.current.geometry.dispose();
+      };
     }, []);
 
     // Lights and background
@@ -210,6 +224,10 @@ const DisplacementSphere = ({
             if (uniforms.current !== undefined) {
                 uniforms.current.time.value =
                     sphereAmplitude * (Date.now() - start.current);
+            }
+
+            if (bgPlane.current && bgPlane.current.material.uniforms) {
+                bgPlane.current.material.uniforms.time.value = (Date.now() - start.current) * 0.001;
             }
 
             sphere.current.rotation.z += rotationSpeed
