@@ -1,7 +1,7 @@
 {
     "name": "personal-website-react",
     "version": "0.2.0",
-    "homepage": "https://jolienhoop.com",
+    "homepage": "https://jackson-greninger.github.io/jackson-personal-portfolio/",
     "description": "This is a clean customizable portfolio template for developers.",
     "repository": "https://github.com/JoHoop/personal-website-react",
     "author": "Jo Lienhoop <hey@jolienhoop.com>",
@@ -31,8 +31,8 @@
     "scripts": {
         "start": "react-scripts start",
         "build": "react-scripts build && react-snapshot",
-        "test": "react-scripts test",
-        "eject": "react-scripts eject"
+        "predeploy": "npm run build",
+        "deploy": "gh-pages -d build"
     },
     "reactSnapshot": {
         "exclude": [
@@ -54,5 +54,8 @@
             "last 1 firefox version",
             "last 1 safari version"
         ]
+    },
+    "devDependencies": {
+        "gh-pages": "^6.3.0"
     }
 }
