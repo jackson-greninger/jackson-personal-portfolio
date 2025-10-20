@@ -3,7 +3,7 @@
     "version": "0.2.0",
     "homepage": "https://jackson-greninger.github.io/jackson-personal-portfolio",
     "description": "This is a clean customizable portfolio template for developers.",
-    "repository": "https://github.com/JoHoop/personal-website-react",
+    "repository": "https://github.com/jackson-greninger/jackson-personal-portfolio",
     "author": "Jo Lienhoop <hey@jolienhoop.com>",
     "license": "MIT",
     "dependencies": {
@@ -34,6 +34,7 @@
         "predeploy": "npm run build",
         "deploy": "gh-pages -d build"
     },
+
     "reactSnapshot": {
         "exclude": [
             "/resume"
