@@ -18,11 +18,6 @@ export const ProjectTimeline = () => {
           that visualizes MIDI note events in real time. It's all console based, so not very fancy or user friendly haha. 
           But I had fun making it!`,
           tech: "Python, Pygame",
-          link: "https://github.com/yourusername/midi-visualizer",
-          media: [
-            { type: "image", src: "/media/midi-demo.png", alt: "Visualizer Screenshot" },
-            { type: "video", src: "/media/midi-demo.mp4" },
-          ],
         },
         {
           title: "Pygame Fluid Simulation",
@@ -32,7 +27,7 @@ export const ProjectTimeline = () => {
           I would later come to conquer this project later on in a much better way.`,
           tech: "Ptyhon, Pygame",
           media: [
-            { type: "video", src: "/PygameSim.mp4" },
+            { type: "video", src: process.env.PUBLIC_URL + "/media/PygameSim.mp4" },
           ],
         },
       ],
@@ -41,7 +36,7 @@ export const ProjectTimeline = () => {
       year: "2025",
       items: [
         {
-          title: "Cocomposer! - Still in Progress",
+          title: "Cocomposer - Still in Progress",
           description: 
           `Over the past year, I have been working with Professor Todd Schmid on a really cool project called Cocomposer.
           The goal is to create a program that enables users to compose generative electronic music through what's called
@@ -55,13 +50,13 @@ export const ProjectTimeline = () => {
           link2Text: "Todd Schmid →",
           link2: "https://toddtoddtodd.net/",
           media: [
-            { type: "image", src: "/Cocomposer_Kalman_Poster-1.png", alt: "Visualizer Screenshot" },
-            { type: "image", src: "/Terminal Cocomposer.png", alt: "Visualizer Screenshot" },
-            { type: "image", src: "/CocomposerGui.png", alt: "Visualizer Screenshot" },
+            { type: "image", src: process.env.PUBLIC_URL + "/media/Cocomposer_Kalman_Poster-1.png", alt: "Visualizer Screenshot" },
+            { type: "image", src: process.env.PUBLIC_URL + "/media/Terminal Cocomposer.png", alt: "Visualizer Screenshot" },
+            { type: "image", src: process.env.PUBLIC_URL + "/media/CocomposerGui.png", alt: "Visualizer Screenshot" },
           ],
         },
         {
-          title: "Dewdrop Canyon!",
+          title: "Dewdrop Canyon",
           description: 
           `For my Software Engineering and Design course at Bucknell University, I was tasked with working on a 
           project with three other students to create a program that demonstrated our understanding of Java and object oriented design. 
@@ -72,14 +67,14 @@ export const ProjectTimeline = () => {
           link: "https://gitlab.bucknell.edu/jwg019/csci205_final_project",
           link2: "https://mediaspace.bucknell.edu/media/Dewdrop+Canyon+-+CSCI2025+Final+Project+Team07+Presentation+/1_09s6i0ps",
           media: [
-            { type: "image", src: "/DewdropHome.png", alt: "Visualizer Screenshot" },
-            { type: "image", src: "/DewdropCabin.png", alt: "Visualizer Screenshot" },
-            { type: "image", src: "/DewdropFarm.png", alt: "Visualizer Screenshot" },
-            { type: "image", src: "/DewdropPlants.png", alt: "Visualizer Screenshot" },
+            { type: "image", src: process.env.PUBLIC_URL + "/media/DewdropHome.png", alt: "Visualizer Screenshot" },
+            { type: "image", src: process.env.PUBLIC_URL + "/media/DewdropCabin.png", alt: "Visualizer Screenshot" },
+            { type: "image", src: process.env.PUBLIC_URL + "/media/DewdropFarm.png", alt: "Visualizer Screenshot" },
+            { type: "image", src: process.env.PUBLIC_URL + "/media/DewdropPlants.png", alt: "Visualizer Screenshot" },
           ],
         },
         {
-          title: "Improved Fluid Simulation :)",
+          title: "Improved Fluid Simulation",
           description: 
           `I was never satisfied with my first attempt at a fluid sim, so I made a much better one!
           I used a particle based approach with SPH (Smoothed Particle Hydrodynamics) for this one,
@@ -93,12 +88,12 @@ export const ProjectTimeline = () => {
           link2Text: "Sebastian's Video →",
           link2: "https://www.youtube.com/watch?v=rSKMYc1CQHE",
           media: [
-            { type: "video", src: "/FluidSim.mp4" },
-            { type: "video", src: "/GasSim.mp4" },
+            { type: "video", src: process.env.PUBLIC_URL + "/media/FluidSim.mp4" },
+            { type: "video", src: process.env.PUBLIC_URL + "/media/GasSim.mp4" },
           ],
         },
         {
-          title: "Neopixels!",
+          title: "Neopixels",
           description: 
           `In one of my Electrical and Computer Engineering courses we were introduced to Neopixels. I found them
           pretty interesting, so I went to Bucknell's makerspace and picked up an 8x8 grid of them to play around with.
@@ -106,11 +101,11 @@ export const ProjectTimeline = () => {
           it out!`,
           tech: "MicroPython, Neopixels, Raspberry Pico",
           media: [
-            { type: "video", src: "/Conway.mp4" },
+            { type: "video", src: process.env.PUBLIC_URL + "/media/Conway.mp4" },
           ],
         },
         {
-          title: "Personal Website!",
+          title: "Personal Website",
           description: 
           `This is the site you’re viewing right now — built with React, Three.js, and some procedural stuff.
           I started with a template that I found on GitHub that was created by Jo Lienhoop, and then heavily 

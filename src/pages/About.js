@@ -41,7 +41,7 @@ export const About = () => {
           </h1>
           {/* Image right under the title */}
           <img
-            src="/updated_headshot.jpg"  // path relative to your public folder
+            src={process.env.PUBLIC_URL + '/updated_headshot.jpg'}  // path relative to your public folder
             alt="About me"
             style={{
               width: "400px",

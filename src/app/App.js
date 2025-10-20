@@ -1,11 +1,9 @@
 import React from "react";
-
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { HashRouter as Router, Switch, Route } from "react-router-dom";
 import { HelmetMeta } from "./HelmetMeta";
 import { ThemeProvider } from "../components/theme/ThemeProvider";
 import { CssBaseline } from "@material-ui/core";
 import { logCredits } from "../utils/logCredits";
-
 import { Home } from "../pages/Home";
 import { Projects } from "../pages/Projects";
 import { Resume } from "../pages/Resume";
@@ -17,8 +15,7 @@ export const App = () => {
     return (
         <ThemeProvider>
             <CssBaseline />
-            <Router>
-                <HelmetMeta />
+            <Router basename={process.env.PUBLIC_URL}>
                 <Switch>
                     <Route path="/" exact component={Home} />
                     <Route path="/resume" component={Resume} />
