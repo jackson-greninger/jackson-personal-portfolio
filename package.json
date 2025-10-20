@@ -1,7 +1,7 @@
 {
     "name": "personal-website-react",
     "version": "0.2.0",
-    "homepage": "https://jackson-greninger.github.io/jackson-personal-portfolio/",
+    "homepage": "https://jackson-greninger.github.io/jackson-personal-portfolio",
     "description": "This is a clean customizable portfolio template for developers.",
     "repository": "https://github.com/jackson-greninger/jackson-personal-portfolio",
     "author": "Jo Lienhoop <hey@jolienhoop.com>",
@@ -29,10 +29,17 @@
         "use-dencrypt-effect": "1.0.1"
     },
     "scripts": {
+<<<<<<< HEAD
       "start": "react-scripts start",
       "build": "react-scripts build && react-snapshot",
       "predeploy": "npm run build",
       "deploy": "gh-pages -d build"
+=======
+        "start": "react-scripts start",
+        "build": "react-scripts build",
+        "predeploy": "npm run build",
+        "deploy": "gh-pages -d build"
+>>>>>>> proceduralbackground
     },
 
     "reactSnapshot": {

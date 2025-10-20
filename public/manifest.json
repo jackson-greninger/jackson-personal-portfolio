@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "name": "Jackson Greninger Portfolio",
   "short_name": "Portfolio",
   "icons": [
@@ -9,4 +10,16 @@
   "display": "standalone",
   "theme_color": "#000000",
   "background_color": "#ffffff"
+=======
+    "name": "Jo Lienhoop | Bremen, Germany",
+    "short_name": "jolienhoop.com",
+    "start_url": "./",
+    "icons": [
+      { "src": "./android-chrome-192x192.png", "sizes": "192x192", "type": "image/png" },
+      { "src": "./android-chrome-512x512.png", "sizes": "512x512", "type": "image/png" }
+    ],
+    "display": "standalone",
+    "theme_color": "#00bfbf",
+    "background_color": "#171c28"
+>>>>>>> proceduralbackground
 }
