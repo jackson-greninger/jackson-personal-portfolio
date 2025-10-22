@@ -29,17 +29,10 @@
         "use-dencrypt-effect": "1.0.1"
     },
     "scripts": {
-<<<<<<< HEAD
-      "start": "react-scripts start",
-      "build": "react-scripts build && react-snapshot",
-      "predeploy": "npm run build",
-      "deploy": "gh-pages -d build"
-=======
         "start": "react-scripts start",
         "build": "react-scripts build",
         "predeploy": "npm run build",
         "deploy": "gh-pages -d build"
->>>>>>> proceduralbackground
     },
 
     "reactSnapshot": {
