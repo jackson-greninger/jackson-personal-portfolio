@@ -22,7 +22,7 @@ export const Resume = () => {
       >
         <div>
           <h1>Resume</h1>
-          <p>Last updated on 10/19/25.</p>
+          <p>Last updated on 10/27/25.</p>
 
           {/* PDF preview */}
           <div style={{ width: "55%", height: "88vh", margin: "2rem auto" }}>
