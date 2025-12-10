@@ -1,10 +1,7 @@
 import React, { useEffect } from "react";
 import PageButtonsPanel from "../components/pagebutton/pagebuttonpanel.js";
-import { initWebGL } from "../components/wildfires/initWebGL.js";
 import { initInstancedRenderer, drawGridInstanced } from "../components/wildfires/drawGrid.js";
 import { createWildfireState, stepWildfire } from "../components/wildfires/wildfirelogic.js";
-
-import "./Automata.css";
 
 export const Automata = () => {
   useEffect(() => {
