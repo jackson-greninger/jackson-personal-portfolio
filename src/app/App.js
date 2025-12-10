@@ -15,7 +15,7 @@ export const App = () => {
     return (
         <ThemeProvider>
             <CssBaseline />
-            <Router basename={process.env.PUBLIC_URL}>
+            <Router>
                 <Switch>
                     <Route path="/" exact component={Home} />
                     <Route path="/resume" component={Resume} />
