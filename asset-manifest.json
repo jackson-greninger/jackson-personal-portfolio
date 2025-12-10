@@ -1,13 +1,17 @@
 {
   "files": {
-    "main.css": "/jackson-personal-portfolio/static/css/main.4f4d5f7c.css",
+    "main.css": "/jackson-personal-portfolio/static/css/main.19d05afe.css",
     "main.js": "/jackson-personal-portfolio/static/js/main.51f7a6eb.js",
+    "static/media/fa-solid-900.woff2": "/jackson-personal-portfolio/static/media/fa-solid-900.8ae0d37556ff1e685de2.woff2",
+    "static/media/fa-brands-400.woff2": "/jackson-personal-portfolio/static/media/fa-brands-400.1c5c7716b05754cb4eab.woff2",
+    "static/media/fa-regular-400.woff2": "/jackson-personal-portfolio/static/media/fa-regular-400.6f05ca9ab7b5345dbc07.woff2",
+    "static/media/fa-v4compatibility.woff2": "/jackson-personal-portfolio/static/media/fa-v4compatibility.e4340c52a50e727c6afa.woff2",
     "index.html": "/jackson-personal-portfolio/index.html",
-    "main.4f4d5f7c.css.map": "/jackson-personal-portfolio/static/css/main.4f4d5f7c.css.map",
+    "main.19d05afe.css.map": "/jackson-personal-portfolio/static/css/main.19d05afe.css.map",
     "main.51f7a6eb.js.map": "/jackson-personal-portfolio/static/js/main.51f7a6eb.js.map"
   },
   "entrypoints": [
-    "static/css/main.4f4d5f7c.css",
+    "static/css/main.19d05afe.css",
     "static/js/main.51f7a6eb.js"
   ]
 }
