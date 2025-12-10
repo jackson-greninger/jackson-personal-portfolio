@@ -8,6 +8,7 @@ import { Home } from "../pages/Home";
 import { Projects } from "../pages/Projects";
 import { Resume } from "../pages/Resume";
 import { About } from "../pages/About";
+import { Automata } from "../pages/Automata";
 
 export const App = () => {
     logCredits();
@@ -21,6 +22,7 @@ export const App = () => {
                     <Route path="/resume" component={Resume} />
                     <Route path="/projects" component={Projects} />
                     <Route path="/about" component={About} />
+                    <Route path="/automata" component={Automata} />
                 </Switch>
             </Router>
         </ThemeProvider>

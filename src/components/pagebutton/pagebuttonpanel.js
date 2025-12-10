@@ -52,6 +52,13 @@ const PageButtonsPanel = () => {
           icon="fas fa-user"
         />
       </div>
+      <div className={classes.buttonSpacing}>
+        <PageButton
+          onClick={() => history.push('/automata')}
+          tooltip="CA Wildfire Sim"
+          icon="fas fa-tree"
+        />
+      </div>
     </div>
   );
 };
