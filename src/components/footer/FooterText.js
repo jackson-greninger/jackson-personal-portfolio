@@ -24,7 +24,7 @@ export const FooterText = () => {
   return (
     <Typography variant='body1' className={classes.footerText}>
       {/* Optional: any footer text you want */}
-      Website last updated: October 2025.
+      Website last updated: December 2025.
     </Typography>
   );
 };

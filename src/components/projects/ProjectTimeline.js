@@ -115,6 +115,32 @@ export const ProjectTimeline = () => {
           link2Text: "Jo's Template →",
           link2: "https://github.com/JoHoop/personal-website-react"
         },
+        {
+          title: "Soccer Object Detection",
+          description: 
+          `Starting in Sepetmber 2025, I wanted to take a shot at training my own AI model to analyze soccer games.
+          Using Python and PyTorch, I started with the YOLOv8 model and began to train it on custom datasets to
+          recognize players, the ball, and referees. My goal is to eventually have it analyze games and provide
+          insights on player movement, formations, and strategies. This is a work in progress, but I'm excited
+          about the potential of combining my interests in sports and AI!`,
+          tech: "Python, PyTorch, YOLOv8, Computer Vision",
+          link: "https://github.com/jackson-greninger/AI-Soccer-Analysis-Model",
+          media: [
+            { type: "video", src: process.env.PUBLIC_URL + "/media/example_detection.mov" },
+          ],
+        },
+        {
+          title: "Cellular Automata Wildfire Simulation",
+          description: 
+          `In December of 2025 I saw a cool research paper about using cellular automata to simulate wildfire spread.
+          I wanted to try my hand at implementing something similar, so I built a simple simulation using javascript
+          and OpenGL. The simulation uses a grid of cells, each of which can be in one of several states (unburned, 
+          burning, burned). The simulation then applies a set of rules to determine how the fire spreads from cell to 
+          cell based on factors like fuel, moisture content, and heat from neighboring cells. It's a basic implementation, 
+          but I hope to increase its complexity later on by adding wind effects and terrain variations. Check it out!
+          It's the last tab on the website.`,
+          tech: "Javascript, OpenGL",
+        },
       ],
     },
   ];

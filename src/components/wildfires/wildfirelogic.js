@@ -1,60 +1,109 @@
-// wildfireLogic.js
+export function createWildfireState(cols, rows, treeDensity) {
+  const grid = new Array(rows);
 
-export function createWildfireState(cols, rows) {
-  const grid = new Uint8Array(cols * rows);
-
-  for (let i = 0; i < grid.length; i++) {
-    grid[i] = 0                             // 1 = tree
+  for (let y = 0; y < rows; y++) {
+    grid[y] = new Array(cols);
+    for (let x = 0; x < cols; x++) {
+      if (Math.random()/10 < treeDensity) {
+        grid[y][x] = {
+          fuel: 1.0 + Math.random() * 2.0,
+          temperature: 0.0,
+          burning: false,
+          moisture: 0.2 + Math.random() * 0.6,
+          burnedOut: false,
+        };
+      } else {
+        grid[y][x] = {
+          fuel: 0.0,
+          temperature: 0.0,
+          burning: false,
+          moisture: 0.0,
+          burnedOut: false,
+        }
+      }
+    } 
   }
-
-  const center = Math.floor((rows / 2) * cols + cols / 2);
-  grid[center] = 2;
-
   return grid;
 }
 
-export function stepWildfire(grid, cols, rows, p = 0.01, f = 0.00001, p_regrow = 0.0001) {
-  const next = new Uint8Array(cols * rows);
+export function stepWildfire(grid, cols, rows, params) {
+  const { lightningProb, treeDensity } = params;
 
-  const idx = (x, y) => y * cols + x;
+  const next = new Array(rows);
+
+  const ignitionTemp = 0.8;
+  const heatTransfer = 0.2;
+  const coolRate = 0.02;
+  const burn_rate = 0.08;
 
   for (let y = 0; y < rows; y++) {
+    next[y] = new Array(cols);
+
     for (let x = 0; x < cols; x++) {
-      const i = idx(x, y);
-      const state = grid[i];
+      const cell = grid[y][x];
+      const updated = { ...cell };
 
-      if (state === 0) {
-        // empty → grow tree based on probability p
-        next[i] = Math.random() < p ? 1 : 0;
+      if (cell.fuel <= 0) {
+        updated.fuel = 0;
+        updated.temperature = 0;
+        updated.burning = false;
+        next[y][x] = updated;
+        continue;
+      }
 
-      } else if (state === 1) {
-        // tree → burning? get neighbors
+      // cool naturally
+      updated.temperature = Math.max(0, updated.temperature - coolRate);
+
+      // lightning strike
+      if (!cell.burning && Math.random() < lightningProb) {
+        updated.burning = true;
+      }
+
+      if (!updated.burning) {
+        let heatFromNeighbors = 0;
+
         const neighbors = [
-          [x+1, y], [x-1, y],
-          [x, y+1], [x, y-1]
+          [-1, -1, Math.SQRT2], [0, -1, 1], [1, -1, Math.SQRT2],
+          [-1,  0, 1],                    [1,  0, 1],
+          [-1,  1, Math.SQRT2], [0,  1, 1], [1,  1, Math.SQRT2]
         ];
 
-        // run through neighbors to see if any are burning
-        let burningNeighbor = false;
-        for (const [nx, ny] of neighbors) {
-          if (nx >= 0 && ny >= 0 && nx < cols && ny < rows) {
-            if (grid[idx(nx, ny)] === 2) {
-              burningNeighbor = true;
-              break;
+        for (const [dx, dy, dist] of neighbors) {
+          const nx = x + dx;
+          const ny = y + dy;
+
+          if (nx >= 0 && nx < cols && ny >= 0 && ny < rows) {
+            const neighbor = grid[ny][nx];
+            if (neighbor.burning) {
+              const weight = heatTransfer / dist;
+              heatFromNeighbors += neighbor.temperature * weight;
             }
           }
         }
 
-        // spontaneous combustion/ignition based on probability f
-        next[i] = burningNeighbor || Math.random() < f ? 2 : 1;
+        // apply heat
+        updated.temperature += heatFromNeighbors;
 
-      } else if (state === 2) {
-        // burning → burnt
-        next[i] = 3;
-
-      } else if (state === 3) {
-        next[i] = Math.random() < p ? 1 : 3 // burnt → empty or grow tree
+        // ignition check
+        if (updated.temperature >= ignitionTemp) {
+          updated.burning = true;
+        }
       }
+
+      // burning cell consumes fuel
+      if (updated.burning) {
+        const moistureFactor = 1 - updated.moisture;
+
+        updated.fuel = Math.max(0, updated.fuel - burn_rate * moistureFactor);
+        updated.temperature = 1.0;
+
+        if (updated.fuel <= 0) {
+          updated.burning = false;
+          updated.burnedOut = true;
+        }
+      }
+
+      next[y][x] = updated;
     }
   }
 
